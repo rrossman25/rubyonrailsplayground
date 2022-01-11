@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <div class="col-8">
         <div class="card text-center mt-4">
-          <h5 class="card-header fst-italic fw-lighter">by R. Rossman</h5>
+          <h5 class="card-header fst-italic fw-lighter">by <%= article.user.username %></h5>
           <div class="card-body">
             <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
             <p class="card-text"><%= article.description %></p>
@@ -22,4 +22,3 @@
     </div>
   <% end %>
 </div>
-<%# <%= article.user.username %>
