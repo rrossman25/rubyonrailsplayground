@@ -1,0 +1,30 @@
+<h1 class="text-center mt-4">betabloggers</h1>
+<div class="flickr_pagination">
+  <%= will_paginate @users, :container => false %>
+</div>
+<div class="container">
+  <%@users.each do | user | %>
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <div class="card text-center mt-4">
+          <h5 class="card-header fst-italic fw-lighter"><%= link_to user.username, user, class: "text-success text-decoration-none"%></h5>
+          <div class="card-body">
+            <%= link_to gravatar_for(user, size: 150), user %>
+            <p class="card-text mt-3"><%= pluralize(user.articles.count, "article") %></p>
+            <button class="btn btn-outline-success"><%= link_to 'view profile', user, class: "text-success text-decoration-none" %></button>
+            <button class="btn btn-outline-info"><%= link_to 'edit profile', edit_user_path(user.id), class: "text-info text-decoration-none"%></button>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">joined <%= time_ago_in_words(user.created_at) %> ago</small><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="flickr_pagination mt-3">
+    <%= will_paginate @users, :container => false %>
+    <div class="page_info">
+      <%= page_entries_info @users %>
+    </div>
+  </div>
+</div>

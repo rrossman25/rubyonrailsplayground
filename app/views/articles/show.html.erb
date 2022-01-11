@@ -3,7 +3,10 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <div class="card text-center mt-4 shadow mb-5 bg-white rounded">
-        <h5 class="card-header fst-italic fw-lighter">by <%= @article.user.username if @article.user %></h5>
+        <div class="card-header fst-italic fw-lighter d-flex justify-content-center">
+          <div class="mx-2">by <%= @article.user.username if @article.user %></div>
+          <%= link_to gravatar_for(@article.user, size: 25), user_path(@article.user) %>
+        </div>
         <div class="card-body">
           <div class="card-text text-start"><%= simple_format(@article.description) %></div>
           <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info"%>
