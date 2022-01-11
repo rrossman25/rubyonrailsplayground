@@ -1,6 +1,9 @@
-<div class="p-5 mb-4 bg-light rounded-3">
+<div class="p-5 rounded-3">
   <div class="container-fluid py-5 jumbotron text-center">
     <h1 class="display-4 fw-bold" id="home-title">betablog</h1>
-    <%= link_to 'sign up', signup_path, class:"btn btn-success btn-lg"%>
+    <div class="mt-4">
+      <%= link_to 'sign up', signup_path, class:"btn btn-success btn-lg"%>
+      <%= link_to 'log in', login_path, class:"btn btn-success btn-lg"%>
+    </div>
   </div>
 </div>
