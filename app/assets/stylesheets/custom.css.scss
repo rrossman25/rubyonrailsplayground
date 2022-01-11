@@ -1,0 +1,30 @@
+@import "bootstrap/dist/css/bootstrap";
+
+.sep {
+  border-top: 3px dashed lightgray !important;
+  width: 33%;
+  margin: auto;
+}
+
+.navbar {
+  background-color: black !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+#logo {
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.75em;
+}
+
+.jumbotron {
+  height: 425px;
+}
+
+#home-title {
+  font-weight: bold;
+  font-size: 5rem;
+}

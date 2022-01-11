@@ -1,8 +1,13 @@
-<% if obj.errors.any? %>
-  <h3>Some errors have occurred</h3>
-  <ul>
-  <% obj.errors.full_messages.each do |error| %>
-    <li> <%= error %></li>
+<div class="container">
+  <% if obj.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <h3 class="alert-heading text-center">please fix the following errors</h3>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <ul>
+        <% obj.errors.full_messages.each do |error| %>
+          <li> <%= error %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-  </ul>
-<% end %>
+</div>
