@@ -1,12 +1,15 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
+
   # show list of articles
   def index
     @articles = Article.paginate(page: params[:page], per_page: 5)
   end
   # show individual article
   def show
-    # byebug
   end
   # show form for new article
   def new
@@ -20,7 +23,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
-      flash[:notice] = "Article created successfully"
+      flash[:notice] = "article created successfully"
       redirect_to @article
     else
       render 'new'
@@ -30,7 +33,7 @@ class ArticlesController < ApplicationController
   # update the article in db
   def update
     if @article.update(article_params)
-      flash[:notice] = "Article updated successfully"
+      flash[:notice] = "article updated successfully"
       redirect_to @article
     else
       render 'edit'
@@ -40,7 +43,7 @@ class ArticlesController < ApplicationController
   # destroy the article in db
   def destroy
     @article.destroy
-    flash[:notice] = "Article deleted successfully"
+    flash[:notice] = "article deleted successfully"
     redirect_to articles_path
   end
 
@@ -52,5 +55,12 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+
+  def require_same_user
+    if current_user != @article.user_id
+      flash[:alert] = "you can only edit your own article"
+      redirect_to @article
+    end
   end
 end
