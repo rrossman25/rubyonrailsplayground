@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-10">
       <%= render 'shared/errors', obj: @user %>
-      <%= form_with(model: @user, local: true, class: "shadow p-3 mb-3 bg-gray rounded") do |f| %>
+      <%= form_with(model: @user, local: true, class: "shadow p-3 mb-3 bg-white rounded") do |f| %>
         <div class="form-group row mb-3">
           <%= f.label "username", :username, class:"col-2 col-form-label" %>
           <div class="col-10">
@@ -25,9 +25,11 @@
           <%= f.submit(@user.new_record? ? "sign up" : "update", class:"btn btn-outline-success btn-lg w-25") %>
         </div>
       <% end %>
-      <div class="text-center">
-        <%= link_to 'cancel and return to articles', articles_path, class:"text-success text-decoration-none"%>
-      </div>
+      <% if logged_in? %>
+        <div class="text-center">
+          <%= link_to 'cancel and return to articles', articles_path, class:"text-light text-decoration-none"%>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
