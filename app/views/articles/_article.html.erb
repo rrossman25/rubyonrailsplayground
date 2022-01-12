@@ -8,8 +8,10 @@
             <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
             <p class="card-text"><%= article.description %></p>
             <button class="btn btn-outline-success"><%= link_to 'Show', article_path(article), class: "text-success text-decoration-none" %></button>
-            <button class="btn btn-outline-info"><%= link_to 'Edit', edit_article_path(article), class: "text-info text-decoration-none"%></button>
-            <button class="btn btn-outline-danger"> <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger text-decoration-none" %></button>
+            <% if current_user.id == article.user.id%>
+              <button class="btn btn-outline-info"><%= link_to 'Edit', edit_article_path(article), class: "text-info text-decoration-none"%></button>
+              <button class="btn btn-outline-danger"> <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger text-decoration-none" %></button>
+            <% end %>
           </div>
           <div class="card-footer">
             <small class="text-muted">created <%= time_ago_in_words(article.created_at) %> ago</small><br>
