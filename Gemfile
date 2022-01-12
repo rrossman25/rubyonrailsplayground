@@ -26,6 +26,7 @@ gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
 
 gem 'will_paginate'
+gem 'rexml', require: false
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
