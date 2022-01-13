@@ -4,6 +4,11 @@
       <div class="col-8">
         <div class="card text-center mt-4">
           <h5 class="card-header fst-italic fw-lighter">by <%= link_to article.user.username, user_path(article.user), class: "text-success text-decoration-none" if article.user %></h5>
+          <div class="mt-2">
+            <% if article.categories.any? %>
+              <%= render article.categories %>
+            <% end %>
+          </div>
           <div class="card-body">
             <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
             <p class="card-text"><%= article.description %></p>
