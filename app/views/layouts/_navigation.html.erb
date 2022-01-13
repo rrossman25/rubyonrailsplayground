@@ -15,8 +15,12 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to 'view articles', articles_path, class:"dropdown-item"%>
+            <%= link_to 'view categories', categories_path, class:"dropdown-item"%>
             <% if logged_in? %>
               <%= link_to 'create new article', new_article_path, class:"dropdown-item"%>
+              <% if current_user.admin %>
+                <%= link_to 'create new category', new_category_path, class:"dropdown-item"%>
+              <% end %>
             <% end %>
           </ul>
         </li>
